@@ -1,6 +1,5 @@
 package com.example.roomsiswa.navigasi
 
-import android.graphics.drawable.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -13,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -56,7 +54,7 @@ fun SiswaTopAppBar(
 
 @Composable
 fun HostNavigasi(
-    navController: NavHostController,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     NavHost(
