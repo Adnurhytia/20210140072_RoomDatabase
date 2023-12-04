@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -22,7 +23,7 @@ import com.example.roomsiswa.ui.theme.halaman.EntrySiswaScreen
 import com.example.roomsiswa.ui.theme.halaman.HomeScreen
 
 @Composable
-fun SiswaApp(navController: NavController = rememberNavController()) {
+fun SiswaApp(navController: NavHostController = rememberNavController()) {
     HostNavigasi(navController = navController)
 }
 
@@ -54,7 +55,7 @@ fun SiswaTopAppBar(
 
 @Composable
 fun HostNavigasi(
-    navController: NavController,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     NavHost(
