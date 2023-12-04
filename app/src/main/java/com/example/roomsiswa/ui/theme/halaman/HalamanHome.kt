@@ -11,6 +11,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -20,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roomsiswa.R
 import com.example.roomsiswa.data.Siswa
@@ -38,10 +40,10 @@ fun HomeScreen(
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
-){
+) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
-    Scaffold (
+    Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SiswaTopAppBar(
@@ -62,8 +64,7 @@ fun HomeScreen(
                 )
             }
         },
-    ){
-        innerPadding ->
+    ) { innerPadding ->
         val uiStateSiswa by viewModel.homeUiState.collectAsState()
         BodyHome(
             itemSiswa = uiStateSiswa.listSiswa,
@@ -78,11 +79,22 @@ fun HomeScreen(
 fun BodyHome(
     itemSiswa: List<Siswa>,
     modifier: Modifier = Modifier
-){
-    Column (
+) {
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-    ){
-
+    ) {
+        if (itemSiswa.isEmpty()) {
+            Text(
+                text = stringResource(R.string.deskripsi_no_item),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleLarge
+            )
+        } else {
+            ListSiswa(
+                itemSiswa = itemSiswa,
+                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+            )
+        }
     }
 }
