@@ -16,6 +16,8 @@ class PenyediaViewModel {
             EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
     }
+
+    companion object
 }
 
 /**
