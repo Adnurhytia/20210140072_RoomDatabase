@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SiswaDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(siswa: Siswa)
+    suspend fun insert(siswa:  Siswa)
 
     @Update
     suspend fun update(siswa: Siswa)
